@@ -56,6 +56,10 @@ void APlayerScript::SetupPlayerInputComponent(class UInputComponent* PlayerInput
 	PlayerInputComponent->BindAction("Sprint", IE_Released, this, &APlayerScript::Walk);
 }
 
+void APlayerScript::Landed(const FHitResult &hit)
+{
+	g_jumpCount = 0;
+}
 
 void APlayerScript::MoveForward(float val)
 {
@@ -81,7 +85,12 @@ void APlayerScript::Interact()
 
 void APlayerScript::Jump()
 {
-	APlayerScript::LaunchCharacter(FVector(0, 0, g_jumpHeight), false, true);
+	if (g_jumpCount < 1)
+	{
+		APlayerScript::LaunchCharacter(FVector(0, 0, g_jumpHeight), false, true);
+		g_jumpCount++;
+	}
+	
 }
 
 void APlayerScript::Sprint()
