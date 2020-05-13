@@ -55,10 +55,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int g_jumpCount;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int g_walkSpeed;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int g_sprintSpeed;
 
 };
